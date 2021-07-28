@@ -27,7 +27,7 @@ namespace RGDialog.Controllers
                 .Select(gp => new { DialogId = gp.Key, ClientIds = gp.Select(dc => dc.IDClient).ToHashSet() })
                 .Where(gp => clientIds.All(clientId => gp.ClientIds.Contains(clientId)))
                 .Select(gp => gp.DialogId)
-                .FirstOrDefault(Guid.Empty);
+                .FirstOrDefault();
 
             return Ok(dialogId);
         }
